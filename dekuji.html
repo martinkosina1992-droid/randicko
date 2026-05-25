@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Děkuju ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .heart {
+      font-size: 60px;
+      animation: heartbeat 1.5s infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.25); }
+      40% { transform: scale(1); }
+      60% { transform: scale(1.25); }
+      100% { transform: scale(1); }
+    }
+
+    .fade-text {
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <div class="heart">❤️</div>
+    <h1 class="fade-text">Děkuju, už se tě nemůžu dočkat…</h1>
+    <p class="fade-text" style="animation-delay: 0.5s;">
+      Tvoje odpověď mi přišla a už se těším na naše rande.
+    </p>
+    <p class="fade-text" style="animation-delay: 1s;">
+      Bude to krásný večer. ✨
+    </p>
+  </div>
+</body>
+</html>
