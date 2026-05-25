@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Vyber datum</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="center">
+    <h1>Vyber datum našeho rande 💌</h1>
+
+    <form id="dateForm">
+      <input type="date" id="dateInput" required>
+      <button type="submit" class="btn yes">Odeslat</button>
+    </form>
+
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const jidlo = params.get("jidlo");
+
+    document.getElementById("dateForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const date = document.getElementById("dateInput").value;
+
+      const mail = "mailto:martinkosina.1992@gmail.com"
+        + "?subject=Rande potvrzeno"
+        + "&body=Vybrané jídlo: " + jidlo + "%0D%0A"
+        + "Datum: " + date;
+
+      window.location.href = mail;
+
+      document.getElementById("msg").innerText = "Otevírám e‑mail… ❤️";
+    });
+  </script>
+</body>
+</html>
