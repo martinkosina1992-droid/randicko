@@ -9,31 +9,28 @@
   <div class="center">
     <h1>Vyber datum našeho rande 💌</h1>
 
-    <form id="dateForm">
-      <input type="date" id="dateInput" required>
-      <button type="submit" class="btn yes">Odeslat</button>
-    </form>
+    <form action="https://formsubmit.co/martinkosina.1992@gmail.com" method="POST">
+      
+      <!-- skryté pole s jídlem -->
+      <input type="hidden" name="jidlo" id="jidloInput">
 
-    <p id="msg"></p>
+      <label>Datum:</label>
+      <input type="date" name="datum" required>
+
+      <button type="submit" class="btn yes">Odeslat pozvánku</button>
+
+      <!-- nastavení FormSubmit -->
+      <input type="hidden" name="_subject" value="Nové rande!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+    </form>
   </div>
 
   <script>
+    // získání jídla z URL
     const params = new URLSearchParams(window.location.search);
     const jidlo = params.get("jidlo");
-
-    document.getElementById("dateForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      const date = document.getElementById("dateInput").value;
-
-      const mail = "mailto:martinkosina.1992@gmail.com"
-        + "?subject=Rande potvrzeno"
-        + "&body=Vybrané jídlo: " + jidlo + "%0D%0A"
-        + "Datum: " + date;
-
-      window.location.href = mail;
-
-      document.getElementById("msg").innerText = "Otevírám e‑mail… ❤️";
-    });
+    document.getElementById("jidloInput").value = jidlo;
   </script>
 </body>
 </html>
