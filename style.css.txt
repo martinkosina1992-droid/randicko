@@ -1,0 +1,74 @@
+const step1 = document.getElementById('step-1');
+const step2 = document.getElementById('step-2');
+const step3 = document.getElementById('step-3');
+
+const yesBtn = document.getElementById('yes-btn');
+const noBtn = document.getElementById('no-btn');
+const toStep3Btn = document.getElementById('to-step-3');
+const sendBtn = document.getElementById('send-btn');
+const dateInput = document.getElementById('date-input');
+const noMessage = document.getElementById('no-message');
+
+// KROK 1 – Ano
+yesBtn.addEventListener('click', () => {
+  step1.classList.remove('active');
+  step2.classList.add('active');
+});
+
+// KROK 1 – Ne utíká
+let offsetX = 0;
+let offsetY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  const rect = noBtn.getBoundingClientRect();
+  const dx = e.clientX - (rect.left + rect.width / 2);
+  const dy = e.clientY - (rect.top + rect.height / 2);
+  const dist = Math.hypot(dx, dy);
+
+  if (dist < 120) {
+    offsetX -= dx / dist * 20;
+    offsetY -= dy / dist * 20;
+
+    noBtn.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    noMessage.classList.remove('hidden');
+  }
+});
+
+// KROK 2 – Pokračovat
+toStep3Btn.addEventListener('click', () => {
+  const selectedFood = document.querySelector('input[name="food"]:checked');
+  if (!selectedFood) {
+    alert('Vyber prosím jídlo 😊');
+    return;
+  }
+  step2.classList.remove('active');
+  step3.classList.add('active');
+});
+
+// KROK 3 – Odeslat
+sendBtn.addEventListener('click', () => {
+  const selectedFood = document.querySelector('input[name="food"]:checked');
+  const dateValue = dateInput.value;
+
+  if (!selectedFood || !dateValue) {
+    alert('Vyplň prosím vše 💖');
+    return;
+  }
+
+  const food = selectedFood.value;
+  const date = new Date(dateValue).toLocaleDateString('cs-CZ');
+
+  const to = "TVŮJ_EMAIL@domena.cz"; // ← sem dej svůj e-mail
+
+  const subject = encodeURIComponent("Pozvánka na rande 💌");
+  const body = encodeURIComponent(
+    `Ahoj,\n\n` +
+    `Rozhodla ses jít na rande: ANO ❤️\n` +
+    `Jídlo: ${food}\n` +
+    `Datum: ${date}\n\n` +
+    `Těším se!\n` +
+    `Tvůj Martin`
+  );
+
+  window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+});

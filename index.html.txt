@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Půjdeš se mnou na rande?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- KROK 1 -->
+    <section id="step-1" class="step active">
+      <h1>Půjdeš se mnou na rande? ❤️</h1>
+      <div class="buttons">
+        <button id="yes-btn" class="btn yes">Ano</button>
+        <button id="no-btn" class="btn no">Ne</button>
+      </div>
+      <p id="no-message" class="hidden">To „Ne“ stejně nikdy neklikneš 😏</p>
+    </section>
+
+    <!-- KROK 2 -->
+    <section id="step-2" class="step">
+      <h1>Co bys chtěla jíst?</h1>
+      <div class="options">
+        <label><input type="radio" name="food" value="Pizza"> Pizza</label>
+        <label><input type="radio" name="food" value="Sushi"> Sushi</label>
+        <label><input type="radio" name="food" value="Burger"> Burger</label>
+        <label><input type="radio" name="food" value="Něco sladkého"> Něco sladkého</label>
+      </div>
+      <button id="to-step-3" class="btn next">Pokračovat</button>
+    </section>
+
+    <!-- KROK 3 -->
+    <section id="step-3" class="step">
+      <h1>Vyber datum našeho rande 💌</h1>
+      <input type="date" id="date-input">
+      <button id="send-btn" class="btn send">Odeslat pozvánku</button>
+      <p class="note">Po kliknutí se ti otevře e‑mail s výsledkem.</p>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
