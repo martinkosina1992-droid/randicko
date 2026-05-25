@@ -1,74 +1,69 @@
-const step1 = document.getElementById('step-1');
-const step2 = document.getElementById('step-2');
-const step3 = document.getElementById('step-3');
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-const yesBtn = document.getElementById('yes-btn');
-const noBtn = document.getElementById('no-btn');
-const toStep3Btn = document.getElementById('to-step-3');
-const sendBtn = document.getElementById('send-btn');
-const dateInput = document.getElementById('date-input');
-const noMessage = document.getElementById('no-message');
+.center {
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.2);
+}
 
-// KROK 1 – Ano
-yesBtn.addEventListener('click', () => {
-  step1.classList.remove('active');
-  step2.classList.add('active');
-});
+h1 {
+  margin-bottom: 30px;
+}
 
-// KROK 1 – Ne utíká
-let offsetX = 0;
-let offsetY = 0;
+.btn-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
 
-document.addEventListener('mousemove', (e) => {
-  const rect = noBtn.getBoundingClientRect();
-  const dx = e.clientX - (rect.left + rect.width / 2);
-  const dy = e.clientY - (rect.top + rect.height / 2);
-  const dist = Math.hypot(dx, dy);
+.btn {
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.2s;
+  text-decoration: none;
+}
 
-  if (dist < 120) {
-    offsetX -= dx / dist * 20;
-    offsetY -= dy / dist * 20;
+.yes {
+  background: #4CAF50;
+  color: white;
+}
 
-    noBtn.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    noMessage.classList.remove('hidden');
-  }
-});
+.no {
+  background: #f44336;
+  color: white;
+  position: relative;
+}
 
-// KROK 2 – Pokračovat
-toStep3Btn.addEventListener('click', () => {
-  const selectedFood = document.querySelector('input[name="food"]:checked');
-  if (!selectedFood) {
-    alert('Vyber prosím jídlo 😊');
-    return;
-  }
-  step2.classList.remove('active');
-  step3.classList.add('active');
-});
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
 
-// KROK 3 – Odeslat
-sendBtn.addEventListener('click', () => {
-  const selectedFood = document.querySelector('input[name="food"]:checked');
-  const dateValue = dateInput.value;
+.food {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  transition: 0.2s;
+}
 
-  if (!selectedFood || !dateValue) {
-    alert('Vyplň prosím vše 💖');
-    return;
-  }
-
-  const food = selectedFood.value;
-  const date = new Date(dateValue).toLocaleDateString('cs-CZ');
-
-  const to = "TVŮJ_EMAIL@domena.cz"; // ← sem dej svůj e-mail
-
-  const subject = encodeURIComponent("Pozvánka na rande 💌");
-  const body = encodeURIComponent(
-    `Ahoj,\n\n` +
-    `Rozhodla ses jít na rande: ANO ❤️\n` +
-    `Jídlo: ${food}\n` +
-    `Datum: ${date}\n\n` +
-    `Těším se!\n` +
-    `Tvůj Martin`
-  );
-
-  window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-});
+.food:hover {
+  transform: scale(1.05);
+}
