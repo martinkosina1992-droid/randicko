@@ -6,73 +6,25 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Jemné fade-in */
     .fade {
-      animation: fadeIn 1s ease forwards;
+      animation: fadeInPage 0.8s ease forwards;
       opacity: 0;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Romantický nadpis */
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-
-    /* Datum input */
-    input[type="date"] {
-      padding: 12px 15px;
-      border-radius: 10px;
-      border: 2px solid #ff9a9e;
-      font-size: 18px;
-      outline: none;
-      transition: 0.3s;
-    }
-
-    input[type="date"]:focus {
-      border-color: #ff6f91;
-      box-shadow: 0 0 10px rgba(255, 111, 145, 0.4);
-    }
-
-    /* Tlačítko */
-    .btn.yes {
-      margin-top: 20px;
-      animation: pulse 2s infinite;
-    }
-
-    /* Jemné srdíčko nahoře */
-    .top-heart {
-      font-size: 40px;
-      animation: heartbeat 1.5s infinite;
-      margin-bottom: 10px;
-    }
-
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      25% { transform: scale(1.25); }
-      40% { transform: scale(1); }
-      60% { transform: scale(1.25); }
-      100% { transform: scale(1); }
     }
   </style>
 </head>
 <body>
   <div class="center fade">
-
     <div class="top-heart">💗</div>
 
-    <h1>Vyber datum našeho večera ✨</h1>
+    <h1>Vyber datum našeho večera, Míro ✨</h1>
+    <p class="subtitle">Ať si to můžu krásně naplánovat jen pro nás dva.</p>
 
-    <form action="https://formsubmit.co/martinkosina.1992@gmail.com" method="POST">
-
+    <form action="https://formsubmit.co/martinkosina.1992@gmail.com" method="POST" onsubmit="handleSubmit()">
       <input type="hidden" name="jidlo" id="jidloInput">
 
       <input type="date" name="datum" required>
 
+      <br>
       <button type="submit" class="btn yes">Potvrdit datum</button>
 
       <input type="hidden" name="_subject" value="Nové rande!">
@@ -81,14 +33,20 @@
       <input type="hidden" name="_next" value="https://martinkosina1992-droid.github.io/randicko/dekuji.html">
     </form>
 
+    <p class="small">Jakékoliv datum vybereš, už se na něj těším. 💞</p>
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const jidlo = params.get("jidlo");
     document.getElementById("jidloInput").value = jidlo;
+
+    function handleSubmit() {
+      document.body.classList.add("fade-out");
+    }
   </script>
 </body>
 </html>
+
 
 
