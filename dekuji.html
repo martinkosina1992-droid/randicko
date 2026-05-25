@@ -4,7 +4,23 @@
   <meta charset="UTF-8">
   <title>Děkuju ❤️</title>
   <link rel="stylesheet" href="style.css">
+
   <style>
+    /* ❤️ Padající srdíčka */
+    .heart-fall {
+      position: fixed;
+      top: -10px;
+      font-size: 25px;
+      animation: fall 4s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10px) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* ❤️ Animace srdce */
     .heart {
       font-size: 60px;
       animation: heartbeat 1.5s infinite;
@@ -19,22 +35,72 @@
       100% { transform: scale(1); }
     }
 
+    /* ✨ Fade-in text */
     .fade-text {
       animation: fadeIn 2s ease forwards;
       opacity: 0;
     }
+
+    .fade-text:nth-child(2) { animation-delay: 0.3s; }
+    .fade-text:nth-child(3) { animation-delay: 0.8s; }
+    .fade-text:nth-child(4) { animation-delay: 1.3s; }
+    .fade-text:nth-child(5) { animation-delay: 1.8s; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
+  <!-- ❤️ Padající srdíčka generovaná skriptem -->
+  <div id="hearts"></div>
+
   <div class="center">
     <div class="heart">❤️</div>
-    <h1 class="fade-text">Děkuju, už se tě nemůžu dočkat…</h1>
-    <p class="fade-text" style="animation-delay: 0.5s;">
-      Tvoje odpověď mi přišla a už se těším na naše rande.
+
+    <h1 class="fade-text">Miluji tě a těším se…</h1>
+
+    <p class="fade-text">
+      Tvoje odpověď mi přišla a mám z toho obrovskou radost.
     </p>
-    <p class="fade-text" style="animation-delay: 1s;">
-      Bude to krásný večer. ✨
+
+    <p class="fade-text">
+      Už se nemůžu dočkat našeho společného rande. ✨
+    </p>
+
+    <p class="fade-text">
+      Bude to krásný večer, slibuju. 💖
+    </p>
+
+    <p class="fade-text" style="font-style: italic; margin-top: 20px;">
+      „Láska není o tom najít někoho, s kým budeš žít…  
+      ale někoho, bez koho si život nedokážeš představit.“ 💞
     </p>
   </div>
+
+  <!-- 🎵 Jemná hudba -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7b5e2ad653.mp3?filename=romantic-piano-ambient-110397.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    /* ❤️ Generování padajících srdíček */
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart-fall");
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
 </body>
 </html>
+
