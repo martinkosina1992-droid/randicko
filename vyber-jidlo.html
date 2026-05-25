@@ -12,31 +12,26 @@
 
     <div class="food-grid">
       <!-- Asie & Itálie -->
-      <a onclick="selectFood(event, 'Asie')" href="datum.html?jidlo=Asie" class="food">🍜 Asie</a>
-      <a onclick="selectFood(event, 'Itálie')" href="datum.html?jidlo=Itálie" class="food">🍝 Itálie</a>
+      <a onclick="clickEffect(event)" href="datum.html?jidlo=Asie" class="food">🍜 Asie</a>
+      <a onclick="clickEffect(event)" href="datum.html?jidlo=Itálie" class="food">🍝 Itálie</a>
 
       <!-- Další kuchyně -->
-      <a onclick="selectFood(event, 'Mexiko')" href="datum.html?jidlo=Mexiko" class="food">🌮 Mexiko</a>
-      <a onclick="selectFood(event, 'Španělsko')" href="datum.html?jidlo=Španělsko" class="food">🥘 Španělsko</a>
-      <a onclick="selectFood(event, 'Česká kuchyně')" href="datum.html?jidlo=Česká" class="food">🍲 Česká kuchyně</a>
-      <a onclick="selectFood(event, 'Amerika')" href="datum.html?jidlo=Amerika" class="food">🍔 Amerika</a>
-      <a onclick="selectFood(event, 'Indie')" href="datum.html?jidlo=Indie" class="food">🍛 Indie</a>
-      <a onclick="selectFood(event, 'Řecko')" href="datum.html?jidlo=Řecko" class="food">🥙 Řecko</a>
-      <a onclick="selectFood(event, 'Francie')" href="datum.html?jidlo=Francie" class="food">🥐 Francie</a>
-      <a onclick="selectFood(event, 'Thajsko')" href="datum.html?jidlo=Thajsko" class="food">🍤 Thajsko</a>
-
-      <!-- Překvap mě -->
-      <a onclick="selectFood(event, 'Překvap mě')" href="datum.html?jidlo=Překvap%20mě" class="food">🎁 Překvap mě</a>
+      <a onclick="clickEffect(event)" href="datum.html?jidlo=Mexiko" class="food">🌮 Mexiko</a>
+      <a onclick="clickEffect(event)" href="datum.html?jidlo=Španělsko" class="food">🥘 Španělsko</a>
+      <a onclick="clickEffect(event)" href="datum.html?jidlo=Česká" class="food">🍲 Česká kuchyně</a>
+      <a onclick="clickEffect(event)" href="datum.html?jidlo=Amerika" class="food">🍔 Amerika</a>
+      <a onclick="clickEffect(event)" href="datum.html?jidlo=Indie" class="food">🍛 Indie</a>
+      <a onclick="clickEffect(event)" href="datum.html?jidlo=Řecko" class="food">🥙 Řecko</a>
+      <a onclick="clickEffect(event)" href="datum.html?jidlo=Francie" class="food">🥐 Francie</a>
+      <a onclick="clickEffect(event)" href="datum.html?jidlo=Thajsko" class="food">🍤 Thajsko</a>
     </div>
 
     <p class="small">Klidně vyber spontánně… já se ti rád přizpůsobím. 💗</p>
   </div>
 
   <script>
-    function selectFood(e, label) {
-      document.body.classList.add("fade-out");
-
-      // mini „třpytky“ efekt
+    function clickEffect(e) {
+      // jen vizuální efekt – neblokuje historii
       const spark = document.createElement("div");
       spark.textContent = "✨";
       spark.style.position = "fixed";
@@ -50,7 +45,7 @@
       setTimeout(() => spark.remove(), 600);
     }
 
-    // jednoduchá animace třpytky
+    // animace třpytky
     const style = document.createElement("style");
     style.innerHTML = `
       @keyframes sparkle {
@@ -62,5 +57,4 @@
   </script>
 </body>
 </html>
-
 
