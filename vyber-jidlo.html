@@ -7,32 +7,60 @@
 </head>
 <body>
   <div class="center fade">
-    <h1>Co by sis dala? 😋</h1>
+    <h1>Míro, na co by sis dala chuť? 😋</h1>
+    <p class="subtitle">Vyber kuchyni a já se postarám o zbytek…</p>
 
     <div class="food-grid">
+      <!-- Asie & Itálie -->
+      <a onclick="selectFood(event, 'Asie')" href="datum.html?jidlo=Asie" class="food">🍜 Asie</a>
+      <a onclick="selectFood(event, 'Itálie')" href="datum.html?jidlo=Itálie" class="food">🍝 Itálie</a>
 
-      <!-- 🔄 Upravené položky -->
-      <a onclick="fadeOut()" href="datum.html?jidlo=Asie" class="food">🍜 Asie</a>
-      <a onclick="fadeOut()" href="datum.html?jidlo=Itálie" class="food">🍝 Itálie</a>
+      <!-- Další kuchyně -->
+      <a onclick="selectFood(event, 'Mexiko')" href="datum.html?jidlo=Mexiko" class="food">🌮 Mexiko</a>
+      <a onclick="selectFood(event, 'Španělsko')" href="datum.html?jidlo=Španělsko" class="food">🥘 Španělsko</a>
+      <a onclick="selectFood(event, 'Česká kuchyně')" href="datum.html?jidlo=Česká" class="food">🍲 Česká kuchyně</a>
+      <a onclick="selectFood(event, 'Amerika')" href="datum.html?jidlo=Amerika" class="food">🍔 Amerika</a>
+      <a onclick="selectFood(event, 'Indie')" href="datum.html?jidlo=Indie" class="food">🍛 Indie</a>
+      <a onclick="selectFood(event, 'Řecko')" href="datum.html?jidlo=Řecko" class="food">🥙 Řecko</a>
+      <a onclick="selectFood(event, 'Francie')" href="datum.html?jidlo=Francie" class="food">🥐 Francie</a>
+      <a onclick="selectFood(event, 'Thajsko')" href="datum.html?jidlo=Thajsko" class="food">🍤 Thajsko</a>
 
-      <!-- 🌍 Další kuchyně -->
-      <a onclick="fadeOut()" href="datum.html?jidlo=Mexiko" class="food">🌮 Mexiko</a>
-      <a onclick="fadeOut()" href="datum.html?jidlo=Španělsko" class="food">🥘 Španělsko</a>
-      <a onclick="fadeOut()" href="datum.html?jidlo=Česká" class="food">🍲 Česká kuchyně</a>
-      <a onclick="fadeOut()" href="datum.html?jidlo=Amerika" class="food">🍔 Amerika</a>
-      <a onclick="fadeOut()" href="datum.html?jidlo=Indie" class="food">🍛 Indie</a>
-      <a onclick="fadeOut()" href="datum.html?jidlo=Řecko" class="food">🥙 Řecko</a>
-      <a onclick="fadeOut()" href="datum.html?jidlo=Francie" class="food">🥐 Francie</a>
-      <a onclick="fadeOut()" href="datum.html?jidlo=Thajsko" class="food">🍤 Thajsko</a>
-
+      <!-- Překvap mě -->
+      <a onclick="selectFood(event, 'Překvap mě')" href="datum.html?jidlo=Překvap%20mě" class="food">🎁 Překvap mě</a>
     </div>
+
+    <p class="small">Klidně vyber spontánně… já se ti rád přizpůsobím. 💗</p>
   </div>
 
   <script>
-    function fadeOut() {
+    function selectFood(e, label) {
       document.body.classList.add("fade-out");
+
+      // mini „třpytky“ efekt
+      const spark = document.createElement("div");
+      spark.textContent = "✨";
+      spark.style.position = "fixed";
+      spark.style.left = e.clientX + "px";
+      spark.style.top = e.clientY + "px";
+      spark.style.fontSize = "26px";
+      spark.style.pointerEvents = "none";
+      spark.style.animation = "sparkle 0.6s ease-out forwards";
+      document.body.appendChild(spark);
+
+      setTimeout(() => spark.remove(), 600);
     }
+
+    // jednoduchá animace třpytky
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes sparkle {
+        from { opacity: 1; transform: translateY(0) scale(1); }
+        to { opacity: 0; transform: translateY(-20px) scale(1.4); }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
+
 
